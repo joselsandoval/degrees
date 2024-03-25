@@ -98,20 +98,18 @@ def shortest_path(source, target):
     # Initialize the frontier to just the starting position
     start = Node(state=source, parent=None, action=None)
     frontier = QueueFrontier()
-    #frontier = StackFrontier()
+    # frontier = StackFrontier()
     frontier.add(start)
-    #print(start.parent)
+
     # Keep track of the explored states
     explored = set()
 
     # Keep looping until solution found
     while not frontier.empty():
 
-        #print("Not empty")
-
         # If nothing left in frontier, then no path
-        #if frontier.empty():
-            #raise Exception("no solution")
+        # if frontier.empty():
+            # raise Exception("no solution")
 
         # Chose a node from the frontier
         node = frontier.remove()
@@ -119,23 +117,23 @@ def shortest_path(source, target):
 
         # If node is the goal, then we have a solution
         if node.state == target:
-            #actions = []
-            #cells = []
+            # actions = []
+            # cells = []
             path = []
 
             # Follow parent nodes to find solution
-            #print(node)
-            #print(node.parent)
+            # print(node)
+            # print(node.parent)
             while node.parent is not None:
-            #while node.parent != "None":
+            # while node.parent != "None":
                 path.append((node.action, node.state))
                 #actions.append(node.action)
                 #cells.append(node.state)
                 node = node.parent
-            #actions.reverse()
-            #cells.reverse()
+            # actions.reverse()
+            # cells.reverse()
             path.reverse()
-            #solution = (actions, cells)
+            # solution = (actions, cells)
             return path
 
         # Mark node as explored
@@ -147,13 +145,13 @@ def shortest_path(source, target):
         # Add neighbors to frontier
         for neighbor in neighbors_for_person(node.state):
             if not frontier.contains_state(neighbor[1]) and neighbor[1] not in explored:
-                #child = Node(state=neighbor[1], parent=node.state, action=neighbor[0])
-                #frontier.add(child)
-                #print("Neighbor: " + neighbor[1])
+                # child = Node(state=neighbor[1], parent=node.state, action=neighbor[0])
+                # frontier.add(child)
+                # print("Neighbor: " + neighbor[1])
                 frontier.add(Node(state=neighbor[1], parent=node, action=neighbor[0]))
-        #for action, state in self.neighbors(node.state):
-            #if not frontier.contains_state(state) and state not in self.explored:
-                #child = Node(state=state, parent=node, action=action)
+        # for action, state in self.neighbors(node.state):
+            # if not frontier.contains_state(state) and state not in self.explored:
+                # child = Node(state=state, parent=node, action=action)
     else:
         return None
     # raise NotImplementedError

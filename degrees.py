@@ -109,7 +109,7 @@ def shortest_path(source, target):
 
         # If nothing left in frontier, then no path
         # if frontier.empty():
-            # raise Exception("no solution")
+        # raise Exception("no solution")
 
         # Chose a node from the frontier
         node = frontier.remove()
@@ -125,10 +125,10 @@ def shortest_path(source, target):
             # print(node)
             # print(node.parent)
             while node.parent is not None:
-            # while node.parent != "None":
+                # while node.parent != "None":
                 path.append((node.action, node.state))
-                #actions.append(node.action)
-                #cells.append(node.state)
+                # actions.append(node.action)
+                # cells.append(node.state)
                 node = node.parent
             # actions.reverse()
             # cells.reverse()
@@ -155,7 +155,6 @@ def shortest_path(source, target):
     else:
         return None
     # raise NotImplementedError
-
 
 
 def person_id_for_name(name):
